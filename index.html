@@ -37,4 +37,10 @@ function updateDogTag(){const n=v('name'),b=v('blood');$('tag-id-single').textCo
 $('dogtag').className='dogtag single';$('dogtag').innerHTML='<div class="tag-plate"><div class="tag-title">육군</div><div id="tag-id-korean" class="tag-name">군번 —</div><div id="tag-name-korean" class="tag-name">이름 —</div><div id="tag-blood-korean" class="tag-detail">혈액형 —</div></div>';
 function updateKoreanDogTag(){const n=v('name'),b=v('blood');$('tag-id-korean').textContent='군번 '+personnelId;$('tag-name-korean').textContent='이름 '+(n||'—');$('tag-blood-korean').textContent='혈액형 '+(b||'—')}
 ['name','blood'].forEach(id=>$(id).addEventListener('input',updateKoreanDogTag));$('blood').addEventListener('change',updateKoreanDogTag);updateKoreanDogTag();
+const branchField=document.createElement('label');branchField.style.marginTop='12px';branchField.innerHTML='<span class="label">군종</span><select id="branch"><option>육군</option><option>해군</option><option>공군</option><option>해병대</option></select>';
+document.querySelector('.form-section:nth-of-type(3)').prepend(branchField);
+document.querySelector('.badge-band').id='badge-branch';
+document.querySelector('#dogtag .tag-title').id='tag-branch';
+function updateBranch(){const branch=v('branch');$('badge-branch').textContent='대한민국 '+branch;$('tag-branch').textContent=branch;}
+$('branch').addEventListener('change',updateBranch);updateBranch();
 </script></body></html>
