@@ -746,68 +746,6 @@ textarea.text { border-radius: 14px !important; }
 @media (prefers-reduced-motion: reduce) {
   .save-btn::before { animation: none; }
 }
-    /* ── 하트 버튼 (모두의 누적 하트) ── */
-    .love-fab {
-      position: fixed; right: 24px; bottom: 24px; z-index: 9999;
-      display: flex; align-items: center; gap: 8px; padding: 10px 18px 10px 14px; border: 0; border-radius: 999px;
-      background: var(--rx-k); color: #fff; font-size: 13.5px; font-weight: 800; font-variant-numeric: tabular-nums;
-      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.7), 0 14px 26px -12px rgba(14, 15, 18, 0.6);
-      transition: background 0.15s ease, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1); user-select: none; -webkit-tap-highlight-color: transparent;
-    }
-    .love-fab:hover { background: #2FA4DE; transform: translateY(-2px); }
-    .love-fab:active { transform: scale(0.94); }
-    .love-fab svg { width: 18px; height: 18px; fill: #5EC4F5; transition: fill 0.15s ease; }
-    .love-fab:hover svg { fill: #fff; }
-    .love-fab.beat svg { animation: loveBeat 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    @keyframes loveBeat { 0% { transform: scale(1); } 40% { transform: scale(1.45); } 100% { transform: scale(1); } }
-    .love-fab .love-num { min-width: 1ch; }
-    .love-fab .love-tip {
-      position: absolute; right: 0; bottom: calc(100% + 12px); white-space: nowrap; pointer-events: none;
-      padding: 9px 13px; border-radius: 14px; background: #fff; color: var(--rx-k); font-size: 12px; font-weight: 800; letter-spacing: -0.03em;
-      box-shadow: inset 0 0 0 1px rgba(14, 15, 18, 0.06), 0 12px 24px -14px rgba(14, 15, 18, 0.45);
-      opacity: 0; transform: translateY(6px) scale(0.96); transform-origin: 85% 100%;
-      transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .love-fab .love-tip b { color: #2FA4DE; font-weight: 900; }
-    .love-fab .love-tip::after {
-      content: ""; position: absolute; right: 26px; top: 100%; width: 10px; height: 10px; margin-top: -5px;
-      background: #fff; transform: rotate(45deg); box-shadow: 1px 1px 0 rgba(14, 15, 18, 0.05);
-    }
-    .love-fab:hover .love-tip, .love-fab:focus-visible .love-tip { opacity: 1; transform: translateY(0) scale(1); }
-    .love-fab.tapped .love-tip { opacity: 0 !important; transform: translateY(6px) scale(0.96) !important; }
-    .love-fab .love-cap { font-size: 10.5px; font-weight: 700; opacity: 0.6; }
-    .love-pop {
-      position: fixed; z-index: 10000; pointer-events: none; width: 16px; height: 16px; margin: -8px 0 0 -8px;
-      animation: lovePop 0.9s ease-out forwards;
-    }
-    .love-pop svg { width: 100%; height: 100%; display: block; }
-    @keyframes lovePop {
-      0% { transform: translate(0, 0) scale(0.4) rotate(0deg); opacity: 1; }
-      100% { transform: translate(var(--dx), var(--dy)) scale(1.1) rotate(var(--rot)); opacity: 0; }
-    }
-
-    .love-card {
-      display: flex; flex-direction: column; align-items: stretch; gap: 10px; padding: 16px; border-radius: 22px;
-      background: rgba(255, 255, 255, 0.55); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.95), 0 22px 44px -32px rgba(14, 15, 18, 0.4);
-    }
-    .love-card-text { font-size: 13px; font-weight: 800; color: var(--rx-k); text-align: center; line-height: 1.6; letter-spacing: -0.03em; }
-    .love-card-text b { color: #2FA4DE; font-weight: 900; }
-    .love-card-text span { font-size: 11px; font-weight: 600; color: var(--rx-g4); }
-    .love-inline {
-      display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 0; border: 0; border-radius: 999px;
-      background: var(--rx-k); color: #fff; font-size: 14px; font-weight: 800; font-variant-numeric: tabular-nums;
-      box-shadow: 0 14px 26px -14px rgba(14, 15, 18, 0.7); transition: background 0.15s ease, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
-      -webkit-tap-highlight-color: transparent;
-    }
-    .love-inline:hover { background: #2FA4DE; transform: translateY(-2px); }
-    .love-inline:hover svg { fill: #fff; }
-    .love-inline:active { transform: scale(0.97); background: #2FA4DE; }
-    .love-inline svg { width: 18px; height: 18px; fill: #5EC4F5; }
-    .love-inline:active svg { fill: #fff; }
-    .love-inline.beat svg { animation: loveBeat 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .love-inline .love-cap { font-size: 11px; font-weight: 700; opacity: 0.6; }
-    @media (max-width: 860px) { .love-fab { display: none; } }
 </style>
 </head>
 <body class="deco-cyber mode-jacket">
@@ -1134,13 +1072,6 @@ textarea.text { border-radius: 14px !important; }
     <div class="meter hidden" id="meter"><i id="meterBar"></i></div>
     <p class="status" id="status" role="status" aria-live="polite"></p>
   </section>
-    <div class="love-card" id="love-card">
-      <p class="love-card-text">P2U의 <b>200일</b>을 축하해 주세요 ♡<br><span>다들 행복한 하루 보내세요! ^.^=b</span></p>
-      <button type="button" class="love-inline" id="love-inline" aria-label="하트 보내기">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
-        <span class="love-num">3,290</span><span class="love-cap">하트</span>
-      </button>
-    </div>
 </aside>
 
 <main class="stage">
@@ -3271,72 +3202,4 @@ window.addEventListener('load',()=>{ getDL(); });
 requestAnimationFrame(loop);
 })();
 </script>
-<button type="button" class="love-fab" id="love-fab" aria-label="하트 보내기">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
-  <span class="love-num">3,290</span>
-  <span class="love-cap">하트</span>
-  <span class="love-tip" role="tooltip">P2U의 <b>200일</b>을 축하해 주세요 ♡</span>
-</button>
-
-<script>
-/* ================= 모두의 누적 하트 =================
-   무료 카운터 서비스 Abacus
-   NAMESPACE는 이 사이트만의 이름이라 다른 사이트와 섞이지 않습니다. */
-(() => {
-  const API = 'https://abacus.jasoncameron.dev';
-  const NAMESPACE = 'yut-musicframe-p2u-200';
-  const KEY = 'hearts';
-  const btns = [document.getElementById('love-fab'), document.getElementById('love-inline')], nums = document.querySelectorAll('.love-num');
-  let count = null, pending = 0, sending = false;
-  const fmt = n => n.toLocaleString('ko-KR');
-  const show = () => { nums.forEach(n => { n.textContent = count == null ? '♡' : fmt(count); }); };
-  async function load() {
-    try {
-      const r = await fetch(`${API}/get/${NAMESPACE}/${KEY}`, { cache: 'no-store' });
-      if (r.status === 404) { if (count == null) count = 0; }
-      else if (r.ok) { const j = await r.json(); if (typeof j.value === 'number') count = Math.max(j.value + pending, count ?? 0); }
-    } catch (e) {}
-    show();
-  }
-  // 빠르게 연타해도 서버 제한(10초에 30회)에 안 걸리게 한 번에 하나씩 천천히 보냄
-  async function drain() {
-    if (sending) return; sending = true;
-    while (pending > 0) {
-      try {
-        const r = await fetch(`${API}/hit/${NAMESPACE}/${KEY}`, { cache: 'no-store' });
-        if (r.status === 429) { await new Promise(res => setTimeout(res, 3000)); continue; }
-        pending--;
-        if (r.ok) { const j = await r.json(); if (typeof j.value === 'number') count = Math.max(count ?? 0, j.value + pending); }
-      } catch (e) { pending--; }
-      show();
-      await new Promise(res => setTimeout(res, 380));
-    }
-    sending = false;
-  }
-  function burst(x, y) {
-    const cols = ['#2FA4DE', '#5EC4F5', '#A6E0FB', '#9BE8D8', '#C9F4EA'];
-    for (let i = 0; i < 7; i++) {
-      const el = document.createElement('span'); el.className = 'love-pop';
-      const a = -Math.PI / 2 + (Math.random() - 0.5) * 1.9, d = 46 + Math.random() * 46;
-      el.style.left = x + 'px'; el.style.top = y + 'px';
-      el.style.setProperty('--dx', Math.cos(a) * d + 'px'); el.style.setProperty('--dy', Math.sin(a) * d + 'px');
-      el.style.setProperty('--rot', (Math.random() - 0.5) * 70 + 'deg');
-      const sz = 10 + Math.random() * 10; el.style.width = el.style.height = sz + 'px';
-      el.innerHTML = `<svg viewBox="0 0 24 24"><path fill="${cols[i % cols.length]}" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
-      document.body.appendChild(el); setTimeout(() => el.remove(), 950);
-    }
-  }
-  btns.forEach(btn => btn.addEventListener('click', () => {
-    count = (count ?? 0) + 1; pending++; show();
-    btn.classList.remove('beat'); void btn.offsetWidth; btn.classList.add('beat', 'tapped');
-    clearTimeout(btn._tt); btn._tt = setTimeout(() => btn.classList.remove('tapped'), 1400);
-    const b = btn.getBoundingClientRect(), svg = btn.querySelector('svg').getBoundingClientRect();
-    burst(svg.left + svg.width / 2, svg.top + svg.height / 2);
-    drain();
-  }));
-  load();
-  setInterval(() => { if (!document.hidden && !sending) load(); }, 30000);
-})();
-</script>
-
 <div data-lastpass-root="" style="position: absolute !important; top: 0px !important; left: 0px !important; height: 0px !important; width: 0px !important; display: initial !important;"></div></body></html>
